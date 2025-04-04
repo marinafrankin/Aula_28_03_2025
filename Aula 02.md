@@ -148,7 +148,19 @@ CREATE TABLE livros (
     ON DELETE SET NULL
     ON UPDATE CASCADE -- no update OK, evite ao máximo no DELETE
 );
+```
+## ALTERANDO UMA TABELAS
+```sql 
 
+---Adicioando Colunas
+ALTER TABLE tabela
+ADD  COLUMN nome_coluna tipo_coluna [restrições]; --repete essa linha quantas forem necessárias
+
+---Alterano uma coluna
+ALTER TABLE
+MODIFY COLUMN nome_coluna novo_tipo [novas_restrições];
+
+---
 ```
 
 -----------------------------------------------------------------------------------------
