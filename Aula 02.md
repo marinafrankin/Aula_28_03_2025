@@ -113,7 +113,45 @@ CREATE TABLE telefone
     FOREING KEY (pessoa_id) REFERENCES pessoas(id_pessoa)
 );
 
+---Ao alterar uma tabela existente
+ALTER TABLE tabela_filho
+ADD CONSTRAINT nome_do_relacionamento FOREIGN KEY (tabela_id)
+    REFERENCES tabela_pai(id_tabela);
+
+--- EXEMPLO
+ALTER TABLE produtos
+ADD CONSTRAINT categoria_produto_fk FOREIGN KEY (categorial_id)
+    REFERENCES categorias(id_categoria);
+
 ```
+### Opções do Relacionamento 
+O MySQL permite especificar o que acontece quando você tenta excluir ou atualizar um registro que está sendo referenciado por 
+uma chave estrangueira:
+`ON UPDATE` - Define o que irá acontecer com os registros relacionados quando o REGISTRO PAI for ALTERADO.
+`ON DELETE` - Define o que irá acontecer com os registros relacionados quando o REGISTRO PAI for EXCLUIDO.
+
+### Ações Possíveis:
+`CASCADE` - Modifica/Exclui automaticamente todos os registros (FILHOS) que possuem relacionamento com o registro Alterado/excluído.
+`SET NULL` - Define a coluna de FK como NULL.
+`RESTRICT` - Impede a modificação/exclusão do REGISTRO PAI (Comportamento padrão se não especificado).
+`NO ACTION` - Similar ao RESTRICT no MySQL
+`SET DEFAULT` - Não suportado no MySQL utilizando InnoDB(Forma que o MySQL guarda os dados)
+
+```sql
+CREATE TABLE livros (
+    id_livro BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    autor_id BIGINT UNSIGNED,
+    ano_publicado INT,
+    CONSTRAINT fk_autor_livro
+    FOREIGN KEY (autor_id) REFERENCES autores(id_autor)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE -- no update OK, evite ao máximo no DELETE
+);
+
+```
+
+-----------------------------------------------------------------------------------------
 ### TIPOS DE MySQL 
 --------------------------------------------------------------------------------------
 ### Tipo Numérico 
@@ -185,7 +223,3 @@ de datas;
 de preferencia;
 
 `LONGVARBINARY`: 
-
-``
-
-``
