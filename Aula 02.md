@@ -92,6 +92,28 @@ Nesta tabela temos os atributos (constraints):
 `UNSIGNED`: Não permite números negativos. "Dobra" a capacidade de números
 ```
 
+### Chave Estrangueira (FOREING KEYS - FK)
+Em nossa bases vamos utilizar o padrão table_id para criação de uma chave estrangueira.
+A FK representa o campo que faz a ligação entre uma tabela com outra com outra que desejamos obter dados adicionais
+A FK de uma tabela de ser SEMPRE apontar e ter as mesma especificações da PK da tabela com quem vai se relacionar.
+
+
+### Exemplos Práticos
+```sql
+---Ao criar a tabela:
+FOREING KEY (coluna_fk) REFERENCES tabela_pai(id_tabela);
+
+---EXEMPLO
+CREATE TABLE telefone
+(
+    id_tlefone BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT;
+    numero VARCHAR(20) NOT NULL,
+    descricao VARCHAR(255),
+    pessoa_id BIGINT UNSIGNED NOT NULL,
+    FOREING KEY (pessoa_id) REFERENCES pessoas(id_pessoa)
+);
+
+```
 ### TIPOS DE MySQL 
 --------------------------------------------------------------------------------------
 ### Tipo Numérico 
@@ -129,7 +151,7 @@ Nesta tabela temos os atributos (constraints):
 
 ----------------------------------------------------------------------------------
 
-### Texto (STRING)
+### Tipo de Texto (STRING)
 
 `CHAR`(M): M x W bytes <= M <= 255;
 
@@ -151,3 +173,19 @@ Nesta tabela temos os atributos (constraints):
 
 `SET`('value1','value2',...): 1, 2, 3, 4 ou 8 dependem de um numero
                                 com o tenham a enumeração (64 membros maximos);
+
+--------------------------------------------------------------------------------------------------------
+
+### Tipo Binário (BLOB) e outros
+
+`BLOB`: é um objeto binário grande que pode segurar uma grande variedade
+de datas;
+
+`VARBINARY`: uma coluna que pode ser grande o bastante para sua criação
+de preferencia;
+
+`LONGVARBINARY`: 
+
+``
+
+``
