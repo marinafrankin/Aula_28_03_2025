@@ -91,3 +91,63 @@ Nesta tabela temos os atributos (constraints):
 `CURRENT_TIMESTAMP`: Preenche o campo com o dia e hora do servidor no momento da inserção
 `UNSIGNED`: Não permite números negativos. "Dobra" a capacidade de números
 ```
+
+### TIPOS DE MySQL 
+--------------------------------------------------------------------------------------
+### Tipo Numérico 
+
+`TINYINT`: valor minimo -128 e valor maximo 127; 
+            1bytes; minimo 0, maximo 255;
+
+`SMALLINT`: valor minimo -32768 e valor max 32767;
+            2 bytes; minimo 0, maximo 65535;
+
+`MEDIUMINT`: valor minimo -8388608 valor max 8388607;
+            3 bytes; minimo 0, maximo 16777215;
+
+`INT`: valor minimo -2147483648 e valor maximo 	2147483647;
+        4 bytes; minimo 0, maximo 4294967295;
+
+`BIGINT`: valor minimo -2^63 e valor maximo 2^63-1
+            8 bytes; minimo 0, maximo 2^64-1
+
+-----------------------------------------------------------------------------------
+
+### Tipo Tempo (Data e Hora)
+
+`DATE`: "zero" value -> '0000-00-00';
+
+`TIME`: "zero" value -> '00:00:00';
+
+`DATETIME`: "zero" value -> '0000-00-00
+                            00:00:00';
+
+`TIMESTAMP`: "zero" value -> '0000-00-00
+                            00:00:00';
+
+`YEAR`: "zero" value -> 0000
+
+----------------------------------------------------------------------------------
+
+### Texto (STRING)
+
+`CHAR`(M): M x W bytes <= M <= 255;
+
+`BINARY`(M): M bytes, 0 <= M <= 255;
+
+`VARCHAR`(M), `VARBINARY` (M): L + 1 bytes se o valor da coluna 
+                                0 - 255 bytes, L + 2 bytes;
+
+`TINYBLOB`, `TINYTEXT`: L + 1 bytes onde L < 2^8;
+
+`BLOB`, `TEXT`: L + 2 bytes, onde L < 2^16;
+
+`MEDIUMBLOB`, `MEDIUMTEXT`: L + 3 bytes, onde L < 2^24;
+
+`LONGBLOB`, `LONGTEXT`: L + 4 bytes, onde L < 2^32;
+
+`ENUM` ('value1','value2',...): 1 ou 2 bytes dependem de um 
+                                número com valor (65,535 values maximo);
+
+`SET`('value1','value2',...): 1, 2, 3, 4 ou 8 dependem de um numero
+                                com o tenham a enumeração (64 membros maximos);
