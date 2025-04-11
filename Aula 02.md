@@ -69,7 +69,8 @@ CREATE TABLE IF NOT EXISTS usuários(
     salario DECIMAL (14,2) DEFAULT 0.00,
     ultimo_acesso DATETIME,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_exclusao TIMESTAMP
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    data_exclusao TIMESTAMP NULL DEFAULT NULL
 );
 
 Nesta tabela temos os tipos de dados:
